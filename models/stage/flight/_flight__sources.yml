@@ -1,0 +1,137 @@
+sources:
+  - name: demo_src
+    description: Источник - Демонстрационная база данных «Авиаперевозки»
+    tables:
+      - name: aircrafts
+        description: '{{ doc("aircrafts_description") }}'
+        columns:
+          - name: aircraft_code
+            description: Aircraft code, IATA
+          - name: model
+            description: Aircraft model
+          - name: range
+            description: Maximal flying distance, km
+          - name: aircraft_code
+            description: Код самолета, *IATA*
+            tests:
+              - not_null
+              - unique
+          - name: model
+            description: "Модель самолета"
+            tests:
+              - not_null
+          - name: range
+            description: >
+              Максимальная дальность полета, км
+            tests:
+              - not_null
+      - name: airports
+        description: Аэропорты
+        columns:
+          - name: airport_code
+            description: Airport code
+            tests:
+              - not_null
+              - unique
+          - name: airport_name
+            description: Airport name
+            tests:
+              - not_null
+          - name: city
+            description: City
+            tests:
+              - not_null
+          - name: coordinates
+            description: Airport coordinates (longitude and latitude)
+            tests:
+              - not_null
+          - name: timezone
+            description: Airport time zone
+            tests:
+              - not_null
+          - name: airport_code
+            description: Код аэропорта
+          - name: airport_name
+            description: Название аэропорта
+          - name: city
+            description: Город  
+          - name: coordinates
+            description: Координаты аэропорта (долгота, широта)
+          - name: timezone
+            description: Часовой пояс аэропорта
+      - name: boarding_passes
+        description: Посадочные талоны
+        columns:
+          - name: ticket_no
+            description: Ticket number
+          - name: flight_id
+            description: Flight ID
+          - name: boarding_no
+            description: Boarding pass number
+          - name: seat_no
+            description: Seat number
+      - name: bookings
+        description: Бронирования
+        columns:
+          - name: book_ref
+            description: Booking number
+          - name: book_date
+            description: Booking date
+          - name: total_amount
+            description: Total booking cost
+      - name: flights
+        description: Рейсы
+        columns:
+          - name: flight_id
+            description: Flight ID
+          - name: flight_no
+            description: Flight number
+          - name: scheduled_departure
+            description: Scheduled departure time
+          - name: scheduled_arrival
+            description: Scheduled arrival time
+          - name: departure_airport
+            description: Airport of departure
+          - name: arrival_airport
+            description: Airport of arrival
+          - name: status
+            description: Flight status
+          - name: aircraft_code
+            description: Aircraft code, IATA
+          - name: actual_departure
+            description: Actual departure time
+          - name: actual_arrival
+            description: Actual arrival time
+      - name: seats
+        description: Места
+        columns:
+          - name: aircraft_code
+            description: Aircraft code, IATA
+          - name: seat_no
+            description: Seat number
+          - name: fare_conditions
+            description: Travel class
+      - name: ticket_flights
+        description: Перелеты
+        columns:
+          - name: ticket_no
+            description: Ticket number
+          - name: flight_id
+            description: Flight ID
+          - name: fare_conditions
+            description: Travel class
+          - name: amount
+            description: Travel cost
+      - name: tickets
+        description: Билеты
+        columns:
+          - name: ticket_no
+            description: Ticket number
+          - name: book_ref
+            description: Booking number
+          - name: passenger_id
+            description: Passenger ID
+          - name: passenger_name
+            description: Passenger name
+          - name: contact_data
+            description: Passenger contact information
