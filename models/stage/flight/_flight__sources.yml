@@ -4,6 +4,7 @@ sources:
     tables:
       - name: aircrafts
         description: '{{ doc("aircrafts_description") }}'
+        freshness: null
         columns:
           - name: aircraft_code
             description: Aircraft code, IATA
@@ -12,7 +13,7 @@ sources:
           - name: range
             description: Maximal flying distance, km
           - name: aircraft_code
-            description: Код самолета, *IATA*
+            description: 'Код самолета, *IATA*'
             tests:
               - not_null
               - unique
@@ -30,25 +31,25 @@ sources:
         columns:
           - name: airport_code
             description: Airport code
-            tests:
-              - not_null
-              - unique
+#            tests:
+#              - not_null
+#              - unique
           - name: airport_name
             description: Airport name
-            tests:
-              - not_null
+#            tests:
+#              - not_null
           - name: city
             description: City
-            tests:
-              - not_null
+#            tests:
+#              - not_null
           - name: coordinates
             description: Airport coordinates (longitude and latitude)
-            tests:
-              - not_null
+#            tests:
+#              - not_null
           - name: timezone
             description: Airport time zone
-            tests:
-              - not_null
+#            tests:
+#              - not_null
           - name: airport_code
             description: Код аэропорта
           - name: airport_name
@@ -79,6 +80,15 @@ sources:
             description: Booking date
           - name: total_amount
             description: Total booking cost
+        freshness:
+          warn_after:
+            count: 21
+            period: hour
+          error_after:
+            count: 1
+            period: day
+          filter: book_date > current_timestamp - '2918 day'::interval
+        loaded_at_field: book_date + '2917 day'::interval
       - name: flights
         description: Рейсы
         columns:

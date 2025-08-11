@@ -12,4 +12,4 @@ SELECT aircraft_code, model, range
 FROM demo_src.aircrafts;
 '''
 
-{% enddocs %}
+{% enddocs %}dbt
