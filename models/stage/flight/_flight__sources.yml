@@ -4,7 +4,7 @@ sources:
     tables:
       - name: aircrafts
         description: '{{ doc("aircrafts_description") }}'
-        freshness: null
+#        freshness: null
         columns:
           - name: aircraft_code
             description: Aircraft code, IATA
