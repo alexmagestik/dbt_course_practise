@@ -10,6 +10,9 @@
 }}
 select book_ref, book_date, total_amount
 from {{ source('demo_src', 'bookings')}}
+
+{# incremental load #}
+
 {% if is_incremental() %}
 WHERE
     book_date > (SELECT max(book_date) FROM {{ source('demo_src', 'bookings')}})  - '7 day'::interval
