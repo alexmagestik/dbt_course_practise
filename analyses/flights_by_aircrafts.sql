@@ -13,6 +13,8 @@ from {{ ref('stg_flight__aircrafts')}}
 
 select 
     {% for aircraft in aircrafts -%}
-    sum(case when aircraft_code = '{{ aircraft }}' then 1 else 0 end) as count_{{ aircraft }} {%- if not loop.last %},{% endif %}
+    sum(case when aircraft_code = '{{ aircraft }}' then 1 else 0 end) as count_{{ aircraft|lower|replace('0','_') }} 
+    {%- if not loop['last'] %},{% endif %}
+     {{ ":" ~ aircraft ~ ":"}} {{ -- loop.index*2 }} {{ loop.cycle('of', 'in') }} {{ loop.length*2 }}
     {% endfor %}
 from {{ ref('stg_flight__flights') }}
