@@ -15,5 +15,5 @@ from {{ source('demo_src', 'bookings')}}
 
 {% if is_incremental() %}
 WHERE
-    book_date > (SELECT max(book_date) FROM {{ source('demo_src', 'bookings')}})  - '7 day'::interval
+    book_date > (SELECT max(book_date) FROM {{ this }})  - '7 day'::interval
 {% endif %}
