@@ -3,5 +3,8 @@
         materialized = 'table',
     )
 }}
-select flight_id, flight_no, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport, status, aircraft_code, actual_departure, actual_arrival
+select 
+    flight_id, flight_no, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport, status, aircraft_code, 
+    actual_departure, actual_arrival,
+    {{ concat_columns(['flight_id', 'flight_no']) }} as flight
 from {{ ref('stg_flight__flights') }}

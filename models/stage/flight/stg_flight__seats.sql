@@ -1,6 +1,6 @@
 {{ 
     config(
-        materialized = 'table',
+        materialized = 'materialized_view',
     )
 }}
 select aircraft_code, seat_no, fare_conditions

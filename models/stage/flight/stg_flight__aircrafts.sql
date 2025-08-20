@@ -1,6 +1,6 @@
 {{ 
     config(
-        materialized = 'table',
+        materialized = 'view',
     )
 }}
 select aircraft_code, model, range
