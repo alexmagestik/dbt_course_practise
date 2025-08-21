@@ -1,4 +1,27 @@
 models:
+  - name: fct_flights
+    description: Рейсы
+    columns:
+      - name: departure_airport
+        description: Аэропорт отправления
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_airports')
+              field: airport_code
+      - name: arrival_airport
+        description: Аэропорт прибытия
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_airports')
+              field: airport_code
+      - name: status
+        description: Статус рейса
+        tests:
+          - not_null
+          - accepted_values: 
+              values: ['On Time', 'Delayed', 'Departed', 'Arrived', 'Scheduled', 'Cancelled']
   - name: fct_bookings
     description: Факты Бронирования
     docs:
