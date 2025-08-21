@@ -2,6 +2,10 @@ models:
   - name: fct_flights
     description: Рейсы
     columns:
+      - name: aircraft_code
+        tests:
+          - dbt_utils.not_empty_string:
+              trim_whitespace: False
       - name: departure_airport
         description: Аэропорт отправления
         tests:

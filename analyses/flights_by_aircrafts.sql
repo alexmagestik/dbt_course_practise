@@ -11,6 +11,8 @@ from {{ ref('stg_flight__aircrafts')}}
     {% set aircrafts = ["CN1","321","SU9"] %}
 {% endif %}
 
+{% set aircrafts = dbt_utils.get_column_values(table=ref('stg_flight__aircrafts'), column='aircraft_code') %}
+
 select 
     {% for aircraft in aircrafts -%}
     sum(case when aircraft_code = '{{ aircraft }}' then 1 else 0 end) as count_{{ aircraft|lower|replace('0','_') }} 
@@ -18,3 +20,4 @@ select
      {{ ":" ~ aircraft ~ ":"}} {{ -- loop.index*2 }} {{ loop.cycle('of', 'in') }} {{ loop.length*2 }}
     {% endfor %}
 from {{ ref('stg_flight__flights') }}
+where aircraft_code in ('{{ aircrafts | join("', '") }}')
