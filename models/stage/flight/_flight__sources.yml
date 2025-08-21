@@ -80,14 +80,14 @@ sources:
             description: Booking date
           - name: total_amount
             description: Total booking cost
-        freshness:
-          warn_after:
-            count: 21
-            period: hour
-          error_after:
-            count: 1
-            period: day
-          filter: book_date > current_timestamp - '2918 day'::interval
+#        freshness:
+#          warn_after:
+#            count: 21
+#            period: hour
+#          error_after:
+#            count: 1
+#            period: day
+#          filter: book_date > current_timestamp - '2918 day'::interval
         loaded_at_field: book_date + '2917 day'::interval
       - name: flights
         description: Рейсы
