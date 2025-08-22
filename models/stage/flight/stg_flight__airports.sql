@@ -13,5 +13,6 @@
         '
     )
 }}
-select airport_code::varchar(4) as airport_code, airport_name, city, coordinates, timezone as {{ adapter.quote('timezone') }}, 'test' as test_column
+select --distinct on (city)
+    airport_code::varchar(4) as airport_code, airport_name, city, coordinates, timezone as {{ adapter.quote('timezone') }}, 'test' as test_column
 from {{ source('demo_src', 'airports')}}

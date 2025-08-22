@@ -41,7 +41,7 @@ sources:
           - name: city
             description: City
 #            tests:
-#              - not_null
+#              - unique
           - name: coordinates
             description: Airport coordinates (longitude and latitude)
 #            tests:

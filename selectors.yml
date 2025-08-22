@@ -1,0 +1,12 @@
+selectors:
+  - name: failed_tests_with_model
+    definition: '1+result:fail'
+  - name: failed_tests_with_model2
+    definition: 
+      result: fail
+  - name: failed_tests_with_model3
+    definition: 
+      method: result
+      value: fail
+      parents: true
+      parents_depth: 1

@@ -4,6 +4,7 @@
     config(
         target_schema = "dds",
         unique_key = "airport_code",
+        grants = {'select': ['public', 'postgres']},
         strategy = "check",
         check_cols = ["airport_name", "city", "coordinates", "timezone"],
         dbt_valid_to_current = "'2100-01-01'",

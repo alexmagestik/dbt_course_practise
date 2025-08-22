@@ -1,0 +1,6 @@
+models:
+  - name: stg_flight__airports
+    columns:
+      - name: city
+#        tests:
+#          - unique
