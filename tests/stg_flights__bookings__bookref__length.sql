@@ -1,8 +1,8 @@
 {{
     config(
         severity = 'warn',
-        error_if = '>829069',
-        warn_if = '>829070'
+        error_if = '>829071',
+        warn_if = '>829071'
     )
 }}
 SELECT
